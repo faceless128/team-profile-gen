@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "inquirer": "^8.2.2",
+    "jest": "^27.5.1"
+  },
+  "name": "week10",
+  "description": "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)\r ## Description\r A Command Line Application that will generate a HTML page for a team of employees.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/faceless128/team-profile-gen.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/faceless128/team-profile-gen/issues"
+  },
+  "homepage": "https://github.com/faceless128/team-profile-gen#readme"
+}

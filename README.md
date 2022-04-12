@@ -1,7 +1,7 @@
 # Team Profile Generator
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ## Description
-A Command Line APplication that will generate a HTML page for a team of employees.
+A Command Line Application that will generate a HTML page for a team of employees.
 
   ## Table of Contents
 * [Installation](#installation)
