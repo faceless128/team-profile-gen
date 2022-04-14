@@ -15,9 +15,9 @@ test("adds ID number for employee", () => {
 
 test('adds email address for employee ', () => {
     const employee = new Employee('Michael Jackson');
-    employee.email = 'michael.jackson@bad.email';
+    employee.email = 'm.jackson@bad.co';
 
-    expect(employee.email).toBe('michael.jackson@bad.email');
+    expect(employee.email).toBe('m.jackson@bad.co');
 });
 
 test('checks job role for employee', () => {
@@ -41,7 +41,7 @@ test('returns id of employee', () => {
 
 test('returns email of employee', () => {
     const employee = new Employee('Michael Jackson');
-    employee.email = 'michael.jackson@bad.email';
+    employee.email = 'm.jackson@bad.co';
  
     expect(employee.email).toBe(employee.getEmail());
 })

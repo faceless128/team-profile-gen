@@ -64,15 +64,12 @@ const GetManager = () => {
 }
 
 const GetEmployees = manager => {
-    console.log(manager);
     teamMembers = [];
     teamMembers.push(manager);
-    console.log(teamMembers);
     AddEmployees(teamMembers);
 }
 
 const AddEmployees = teamMembers => {
-    console.log(teamMembers);
     return inquirer.prompt({
         type: 'list',
         message: 'Would you like to add an employee to the team?',
@@ -81,11 +78,13 @@ const AddEmployees = teamMembers => {
     })
     .then(({ action }) => {
         if (action === 'Yes, add an Engineer') {
-            return GetEngineer()
+            console.log(teamMembers);
+            return GetEngineer(teamMembers);
         } else if (action === 'Yes, add an Intern') {
-            return GetIntern()
+            console.log(teamMembers);
+            return GetIntern(teamMembers);
         } else {
-            console.log(manager);
+            console.log(teamMembers);
             return true;
         }
     })
@@ -152,6 +151,7 @@ const GetEngineer = teamMembers => {
     }])
     .then(employeeData => {
         teamMembers.push(employeeData);
+        console.log(teamMembers);
         return AddEmployees(teamMembers);
     })
 }
@@ -164,7 +164,6 @@ const GetIntern = teamMembers => {
         validate: nameInput => {
             if (nameInput) {
                 intern = new Intern(nameInput);
-                intern.role = 'Intern';
                 return true;
             } else {
                 console.log("Please enter the Intern's name!");
@@ -215,7 +214,8 @@ const GetIntern = teamMembers => {
         }
     }])
     .then(employeeData => {
-        teamMembers.intern.push(employeeData);
+        teamMembers.push(employeeData);
+        console.log(teamMembers);
         return AddEmployees(teamMembers);
     })
 }
