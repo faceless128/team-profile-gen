@@ -20,9 +20,8 @@ test('adds email address for employee ', () => {
     expect(employee.email).toBe('michael.jackson@bad.email');
 });
 
-test('adds job role for employee', () => {
+test('checks job role for employee', () => {
     const employee = new Employee('Michael Jackson');
-    employee.role = 'Employee';
 
     expect(employee.role).toBe('Employee');
 });
