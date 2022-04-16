@@ -2,7 +2,9 @@ const inquirer = require('inquirer');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
+const getHTML = require('./getHTML');
 
+// Request the Manager information
 const GetManager = () => {
     return inquirer.prompt([{
         type: 'text',
@@ -10,8 +12,6 @@ const GetManager = () => {
         message: "What is the Manager's name?",
         validate: nameInput => {
             if (nameInput) {
-                manager = new Manager(nameInput);
-                manager.role = 'Manager';
                 return true;
             } else {
                 console.log("Please enter the Manager's name!");
@@ -25,7 +25,6 @@ const GetManager = () => {
         message: "What is the Manager's employee ID number?",
         validate: idInput => {
             if (idInput) {
-                manager.id = idInput;
                 return true;
             } else {
                 console.log("Please enter the Manager's employee ID number!");
@@ -39,7 +38,6 @@ const GetManager = () => {
         message: "What is the Manager's email address?",
         validate: emailInput => {
             if (emailInput) {
-                manager.email = emailInput;
                 return true;
             } else {
                 console.log("Please enter the Manager's email address!");
@@ -53,7 +51,6 @@ const GetManager = () => {
         message: "What is the Manager's office number?",
         validate: officeInput => {
             if (officeInput) {
-                manager.office = officeInput;
                 return true;
             } else {
                 console.log("Please enter the Manager's office number!");
@@ -61,14 +58,19 @@ const GetManager = () => {
             }
         }
     }])
+    .then(answers => {
+        teamMembers = [];
+        manager = new Manager(answers.name);
+        manager.id = answers.id;
+        manager.email = answers.email;
+        manager.office = answers.office;
+        teamMembers.push(manager);
+        // console.log(teamMembers);
+        AddEmployees(teamMembers);
+    })
 }
 
-const GetEmployees = manager => {
-    teamMembers = [];
-    teamMembers.push(manager);
-    AddEmployees(teamMembers);
-}
-
+// Loop to add employees and end adding employees
 const AddEmployees = teamMembers => {
     return inquirer.prompt({
         type: 'list',
@@ -78,19 +80,21 @@ const AddEmployees = teamMembers => {
     })
     .then(({ action }) => {
         if (action === 'Yes, add an Engineer') {
-            console.log(teamMembers);
+            // console.log(teamMembers);
             return GetEngineer(teamMembers);
         } else if (action === 'Yes, add an Intern') {
-            console.log(teamMembers);
+            // console.log(teamMembers);
             return GetIntern(teamMembers);
         } else {
-            console.log(teamMembers);
+            // console.log(teamMembers);
+            getHTML(teamMembers);
             return true;
         }
     })
 
 }
 
+// Request for Engineer information
 const GetEngineer = teamMembers => {
     return inquirer.prompt([{
         type: 'text',
@@ -98,8 +102,6 @@ const GetEngineer = teamMembers => {
         message: "What is the Engineer's name?",
         validate: nameInput => {
             if (nameInput) {
-                engineer = new Engineer(nameInput);
-                engineer.role = 'Engineer';
                 return true;
             } else {
                 console.log("Please enter the Engineer's name!");
@@ -113,7 +115,6 @@ const GetEngineer = teamMembers => {
         message: "What is the Engineer's employee ID number?",
         validate: idInput => {
             if (idInput) {
-                engineer.id = idInput;
                 return true;
             } else {
                 console.log("Please enter the Engineer's employee ID number!");
@@ -127,7 +128,6 @@ const GetEngineer = teamMembers => {
         message: "What is the Engineer's email address?",
         validate: emailInput => {
             if (emailInput) {
-                engineer.email = emailInput;
                 return true;
             } else {
                 console.log("Please enter the Engineer's email address!");
@@ -141,7 +141,6 @@ const GetEngineer = teamMembers => {
         message: "What is the Engineer's GitHub username?",
         validate: githubInput => {
             if (githubInput) {
-                engineer.github = githubInput;
                 return true;
             } else {
                 console.log("Please enter the Engineer's GitHub username!");
@@ -149,13 +148,18 @@ const GetEngineer = teamMembers => {
             }
         }
     }])
-    .then(employeeData => {
-        teamMembers.push(employeeData);
-        console.log(teamMembers);
-        return AddEmployees(teamMembers);
+    .then(answers => {
+        engineer = new Engineer(answers.name);
+        engineer.id = answers.id;
+        engineer.email = answers.email;
+        engineer.github = answers.github;
+        teamMembers.push(engineer);
+        // console.log(teamMembers);
+        AddEmployees(teamMembers);
     })
 }
 
+// Request for Intern information
 const GetIntern = teamMembers => {
     return inquirer.prompt([{
         type: 'text',
@@ -213,12 +217,17 @@ const GetIntern = teamMembers => {
             }
         }
     }])
-    .then(employeeData => {
-        teamMembers.push(employeeData);
+    .then(answers => {
+        intern = new Intern(answers.name);
+        intern.id = answers.id;
+        intern.email = answers.email;
+        intern.school = answers.school;
+        teamMembers.push(intern);
         console.log(teamMembers);
-        return AddEmployees(teamMembers);
+        AddEmployees(teamMembers);
     })
 }
 
+// Call to start application
 GetManager()
-    .then(GetEmployees);
+// .then(teamMembers => {return getHTML(teamMembers)})
