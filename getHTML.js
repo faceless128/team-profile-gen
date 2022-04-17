@@ -7,7 +7,7 @@ const getTheTeam = teamMembers => {
             .filter(({ role }) => role === 'Manager')
             .map(({ name, id, email, office, role }) => {
                 return `
-                    <div class="col-4 col-md-4 mb-2 bg-dark text-light p-3 flex-column">
+                    <div class="col-12 col-md-4 mb-2 bg-dark text-light p-3 flex-column">
                     <h3 class="profile-item-title">${name}
                         <br><i class="fas fa-coffee mr-2"></i>${role}</h3>
                     <h5 class="profile-special">
@@ -27,7 +27,7 @@ const getTheTeam = teamMembers => {
             .filter(({ role }) => role === 'Engineer')
             .map(({ name, id, email, github, role }) => {
                 return `
-                    <div class="col-4 col-md-4 mb-2 bg-dark text-light p-3 flex-column">
+                    <div class="col-12 col-md-4 mb-2 bg-dark text-light p-3 flex-column">
                     <h3 class="profile-item-title">${name}
                         <br><i class="fas fa-glasses mr-2"></i>${role}</h3>
                     <h5 class="profile-special">
@@ -47,7 +47,7 @@ const getTheTeam = teamMembers => {
             .filter(({ role }) => role === 'Intern')
             .map(({ name, id, email, school, role }) => {
                 return `
-                    <div class="col-4 col-md-4 mb-2 bg-dark text-light p-3 flex-column">
+                    <div class="col-12 col-md-4 mb-2 bg-dark text-light p-3 flex-column">
                     <h3 class="profile-item-title">${name}
                         <br><i class="fas fa-graduation-cap mr-2"></i>${role}</h3>
                     <h5 class="profile-special">
