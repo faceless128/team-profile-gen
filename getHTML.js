@@ -5,7 +5,7 @@ const getTheTeam = teamMembers => {
                 <div class="flex-row justify-space-around">
         ${teamMembers
             .filter(({ role }) => role === 'Manager')
-            .map(({ name, id, email, office }) => {
+            .map(({ name, id, email, office, role }) => {
                 return `
                     <div class="col-4 col-md-4 mb-2 bg-dark text-light p-3 flex-column">
                     <h3 class="profile-item-title">${name}
@@ -25,7 +25,7 @@ const getTheTeam = teamMembers => {
             .join('')}
         ${teamMembers
             .filter(({ role }) => role === 'Engineer')
-            .map(({ name, id, email, github }) => {
+            .map(({ name, id, email, github, role }) => {
                 return `
                     <div class="col-4 col-md-4 mb-2 bg-dark text-light p-3 flex-column">
                     <h3 class="profile-item-title">${name}
@@ -45,7 +45,7 @@ const getTheTeam = teamMembers => {
             .join('')}
         ${teamMembers
             .filter(({ role }) => role === 'Intern')
-            .map(({ name, id, email, school }) => {
+            .map(({ name, id, email, school, role }) => {
                 return `
                     <div class="col-4 col-md-4 mb-2 bg-dark text-light p-3 flex-column">
                     <h3 class="profile-item-title">${name}
