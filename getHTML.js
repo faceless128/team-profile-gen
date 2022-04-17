@@ -7,7 +7,7 @@ const getTheTeam = teamMembers => {
             .filter(({ role }) => role === 'Manager')
             .map(({ name, id, email, office, role }) => {
                 return `
-                    <div class="col-4 col-md-4 mb-2 bg-dark text-light p-3 flex-column">
+                    <div class="col-12 col-md-4 mb-2 bg-dark text-light p-3 flex-column">
                     <h3 class="profile-item-title">${name}
                         <br><i class="fas fa-coffee mr-2"></i>${role}</h3>
                     <h5 class="profile-special">
@@ -27,7 +27,7 @@ const getTheTeam = teamMembers => {
             .filter(({ role }) => role === 'Engineer')
             .map(({ name, id, email, github, role }) => {
                 return `
-                    <div class="col-4 col-md-4 mb-2 bg-dark text-light p-3 flex-column">
+                    <div class="col-12 col-md-4 mb-2 bg-dark text-light p-3 flex-column">
                     <h3 class="profile-item-title">${name}
                         <br><i class="fas fa-glasses mr-2"></i>${role}</h3>
                     <h5 class="profile-special">
@@ -47,7 +47,7 @@ const getTheTeam = teamMembers => {
             .filter(({ role }) => role === 'Intern')
             .map(({ name, id, email, school, role }) => {
                 return `
-                    <div class="col-4 col-md-4 mb-2 bg-dark text-light p-3 flex-column">
+                    <div class="col-12 col-md-4 mb-2 bg-dark text-light p-3 flex-column">
                     <h3 class="profile-item-title">${name}
                         <br><i class="fas fa-graduation-cap mr-2"></i>${role}</h3>
                     <h5 class="profile-special">
@@ -78,7 +78,7 @@ module.exports = pageHTML  => {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equic="X-UA-Compatible" content="ie=edge">
-        <title>Portfolio Demo</title>
+        <title>My Team</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
         <link href="https://fonts.googleapis.com/css?family=Public+Sans:300i,300,500&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
