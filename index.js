@@ -85,7 +85,6 @@ const AddEmployees = teamMembers => {
             return GetIntern(teamMembers);
         } else if  (action === 'No, I am finished adding employees') {
             pageHTML = getHTML(teamMembers);
-            console.log(pageHTML);
             writeToFile(pageHTML);
             copyFile();
             // return pageHTML;
