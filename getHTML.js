@@ -1,6 +1,6 @@
-
+// Generate team member profile cards
 const getTheTeam = teamMembers => {
-    return(`
+    return `
             <section class="my-3" id="profile">
                 <div class="flex-row justify-space-around">
         ${teamMembers
@@ -9,7 +9,7 @@ const getTheTeam = teamMembers => {
                 return `
                     <div class="col-4 col-md-4 mb-2 bg-dark text-light p-3 flex-column">
                     <h3 class="profile-item-title">${name}
-                        <br><i class="fas fa-coffee mr-2"></i>Manager</h3>
+                        <br><i class="fas fa-coffee mr-2"></i>${role}</h3>
                     <h5 class="profile-special">
                         ID: ${id}
                     </h5>
@@ -29,7 +29,7 @@ const getTheTeam = teamMembers => {
                 return `
                     <div class="col-4 col-md-4 mb-2 bg-dark text-light p-3 flex-column">
                     <h3 class="profile-item-title">${name}
-                        <br><i class="fas fa-glasses mr-2"></i>Manager</h3>
+                        <br><i class="fas fa-glasses mr-2"></i>${role}</h3>
                     <h5 class="profile-special">
                         ID: ${id}
                     </h5>
@@ -49,7 +49,7 @@ const getTheTeam = teamMembers => {
                 return `
                     <div class="col-4 col-md-4 mb-2 bg-dark text-light p-3 flex-column">
                     <h3 class="profile-item-title">${name}
-                        <br><i class="fas fa-graduation-cap mr-2"></i>Manager</h3>
+                        <br><i class="fas fa-graduation-cap mr-2"></i>${role}</h3>
                     <h5 class="profile-special">
                         ID: ${id}
                     </h5>
@@ -65,12 +65,12 @@ const getTheTeam = teamMembers => {
             .join('')}
                 </div>
             </section>
-    `)
+    `
 }
 
-
+// Generate HTML for My Team page
 module.exports = pageHTML  => {
-    console.log(`
+    return `
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -98,5 +98,5 @@ module.exports = pageHTML  => {
         </footer>
     </body>
     </html>
-    `)
+    `
 };

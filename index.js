@@ -1,4 +1,5 @@
 const inquirer = require('inquirer');
+const fs = require('fs');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
@@ -65,7 +66,6 @@ const GetManager = () => {
         manager.email = answers.email;
         manager.office = answers.office;
         teamMembers.push(manager);
-        // console.log(teamMembers);
         AddEmployees(teamMembers);
     })
 }
@@ -80,18 +80,17 @@ const AddEmployees = teamMembers => {
     })
     .then(({ action }) => {
         if (action === 'Yes, add an Engineer') {
-            // console.log(teamMembers);
             return GetEngineer(teamMembers);
         } else if (action === 'Yes, add an Intern') {
-            // console.log(teamMembers);
             return GetIntern(teamMembers);
-        } else {
-            // console.log(teamMembers);
-            getHTML(teamMembers);
-            return true;
+        } else if  (action === 'No, I am finished adding employees') {
+            pageHTML = getHTML(teamMembers);
+            console.log(pageHTML);
+            writeToFile(pageHTML);
+            copyFile();
+            // return pageHTML;
         }
     })
-
 }
 
 // Request for Engineer information
@@ -154,7 +153,6 @@ const GetEngineer = teamMembers => {
         engineer.email = answers.email;
         engineer.github = answers.github;
         teamMembers.push(engineer);
-        // console.log(teamMembers);
         AddEmployees(teamMembers);
     })
 }
@@ -223,11 +221,59 @@ const GetIntern = teamMembers => {
         intern.email = answers.email;
         intern.school = answers.school;
         teamMembers.push(intern);
-        console.log(teamMembers);
         AddEmployees(teamMembers);
     })
 }
 
+// Write Team Page
+const writeToFile = fileContent => {
+    checkDir();
+    return new Promise((resolve, reject) => {
+        fs.writeFile('./dist/index.html', fileContent, err => {
+            if (err) {
+                reject(err);
+                return;
+            }
+            resolve({
+                ok: true,
+                message: 'File created!'
+            });
+        });
+    });
+}
+
+// Copy style.css
+const copyFile = fileContent => {
+    return new Promise((resolve, reject) => {
+        fs.copyFile('./src/style.css','./dist/style.css', err => {
+            if (err) {
+                reject(err);
+                return;
+            }
+            resolve({
+                ok: true,
+                message: 'File copied!'
+            });
+        });
+    });
+};
+
+// check for dist directory
+const checkDir = () => {
+    if(!fs.existsSync("dist")){
+        fs.mkdirSync("dist", 0766, function(err){
+            if(err){
+                console.log(err);
+                // echo the result back
+                response.send("ERROR! Can't make the directory! \n");
+            }
+        });
+    }
+}
+
 // Call to start application
 GetManager()
+    // .then(pageHTML => (writeToFile(pageHTML)))
+    // .then(copyFile())
+
 // .then(teamMembers => {return getHTML(teamMembers)})
