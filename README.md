@@ -9,6 +9,7 @@ A Command Line Application that will generate a HTML page for a team of employee
 * [Usage](#usage)
 * [Tests](#tests)
 * [Demonstration](#demonstration)
+* [Screenshot](#screenshot)
 
 ## Features
 Generates webpage from user input
@@ -27,3 +28,6 @@ Testing done on employee objects with Jest.
 
 ## Demonstration
 Here is a [Video Walkthrough](https://drive.google.com/file/d/1Czy1IuNJYozFk8F3Rj9cc33BCjQn4yiw/view)
+
+## Screenshot
+![Here is a screenshot of the webpage generated from user input](./screenshot.png)
